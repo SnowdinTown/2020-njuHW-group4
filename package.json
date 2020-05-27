@@ -1,0 +1,23 @@
+{
+  "name": "njuhw-group4",
+  "version": "1.0.0",
+  "description": "njuse homework by group4",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "initdb": "npm install && node tools/initdb.js"
+  },
+  "dependencies": {
+    "koa": "^2.12.0",
+    "koa-router": "^8.0.8",
+    "koa-bodyparser": "^4.3.0",
+    "mysql": "^2.18.1",
+    "knex": "^0.21.1",
+    "lodash": "^4.17.15",
+    "debug": "latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
