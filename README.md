@@ -21,6 +21,9 @@ njuHW-group4
 │       └── index.js
 ├── config.js  //数据库配置
 ├── package.json
+├── tools
+│   ├── initdb.js  //初始化数据库
+│   └── cAuth.sql  
 └── router
     └── index.js //controller与路由匹配
 ```
