@@ -987,14 +987,19 @@ CREATE TABLE `association_album` (
     `association_id` int(32) NOT NULL,
     `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     primary key (`album_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=6;
 
 --
 -- 转存表中的数据 `association_album`
 --
 
 INSERT INTO `association_album` (album_id, album_name, association_id, create_time) VALUES
-(1,'社团相册样例',1,'2020-06-15 12:00:00');
+(1,'社团相册样例1',1,'2020-06-15 12:00:00'),
+(2,'社团相册样例2',1,'2020-06-15 12:00:00'),
+(3,'社团相册样例3',1,'2020-06-15 12:00:00'),
+(4,'社团相册样例4',102,'2020-06-15 12:00:00'),
+(5,'社团相册样例5',102,'2020-06-15 12:00:00');
+
 
 -- --------------------------------------------------------
 
@@ -1005,25 +1010,34 @@ DROP TABLE IF EXISTS `photo`;
 CREATE TABLE `photo` (
     `photo_id` int(32) NOT NULL AUTO_INCREMENT,
     `description` varchar(500),
-    `image_src` varchar(255) NOT NULL ,
+    `image_src` varchar(500) NOT NULL ,
     `album_id` int(32) NOT NULL ,
     `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`photo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=13;
 
 --
 -- 转存表中的数据 `photo`
 --
 
-INSERT INTO `photo` (photo_id, description, image_src, album_id, upload_date) VALUES
-(1,'社团照片样例','https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1592192179&di=f28c407031e652f6d0059a0567e0a97a&src=http://ku.90sjimg.com/element_pic/17/05/18/e00e570d52eaa3fd824f07f328804f64.jpg',1,'2020-06-15');
-
+INSERT INTO `photo` (photo_id, description, image_src, album_id) VALUES
+(1,'社团照片样例1','https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1592192179&di=f28c407031e652f6d0059a0567e0a97a&src=http://ku.90sjimg.com/element_pic/17/05/18/e00e570d52eaa3fd824f07f328804f64.jpg',1),
+(2,'社团照片样例2','https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1073989505,2071994816&fm=26&gp=0.jpg',1),
+(3,'社团照片样例3','https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=10754526,522141627&fm=26&gp=0.jpg',1),
+(4,'社团照片样例4','https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1073989505,2071994816&fm=26&gp=0.jpg',2),
+(5,'社团照片样例5','https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=10754526,522141627&fm=26&gp=0.jpg',2),
+(6,'社团照片样例6','https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1953768877,1566052938&fm=26&gp=0.jpg',2),
+(7,'社团照片样例7','https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=10754526,522141627&fm=26&gp=0.jpg',3),
+(8,'社团照片样例8','https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1073989505,2071994816&fm=26&gp=0.jpg',3),
+(9,'社团照片样例9','https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=10754526,522141627&fm=26&gp=0.jpg',3),
+(10,'社团照片样例10','https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1953768877,1566052938&fm=26&gp=0.jpg',3),
+(11,'自行车协会活动1','https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2283741590,3282225694&fm=26&gp=0.jpg',4),
+(12,'自行车协会活动1','https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2508441358,1040572469&fm=26&gp=0.jpg',4);
 -- --------------------------------------------------------
 
 --
 -- 表的结构 `message_wall`
 --
-DROP TABLE IF EXISTS `audit_message`;
 DROP TABLE IF EXISTS `message_wall`;
 CREATE TABLE `message_wall` (
         `message_id` int(32) NOT NULL AUTO_INCREMENT,
@@ -1035,15 +1049,17 @@ CREATE TABLE `message_wall` (
         `user_name` varchar(255) NOT NULL ,
         `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         primary key (`message_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=5;
 
 --
 -- 转存表中的数据 `message_wall`
 --
 
 INSERT INTO `message_wall` (message_id, content, likes,status, association_id, user_avatarUrl, user_name, date) VALUES
-(1,'一个积极向上，朝气蓬勃的社团，加油！！',2,true,1,'https://i1.hdslb.com/bfs/face/cbd37566b7c772d7a5c66d7fd2628b9cf610f897.jpg@87w_88h_1c_100q.webp','小邪神','2020-06-15 12:00:00');
-
+(1,'一个积极向上，朝气蓬勃的社团，加油！！',2,true,1,'https://i1.hdslb.com/bfs/face/cbd37566b7c772d7a5c66d7fd2628b9cf610f897.jpg@87w_88h_1c_100q.webp','小邪神','2020-06-15 12:00:00'),
+(2,'一个积极向上，朝气蓬勃的社团，加油！！',0,true,1,'https://i1.hdslb.com/bfs/face/cbd37566b7c772d7a5c66d7fd2628b9cf610f897.jpg@87w_88h_1c_100q.webp','小邪神','2020-06-15 12:00:00'),
+(3,'一个积极向上，朝气蓬勃的社团，加油！！',0,true,1,'https://i1.hdslb.com/bfs/face/cbd37566b7c772d7a5c66d7fd2628b9cf610f897.jpg@87w_88h_1c_100q.webp','小邪神','2020-06-15 12:00:00'),
+(4,'一个积极向上，朝气蓬勃的社团，加油！！',2,false,1,'https://i1.hdslb.com/bfs/face/cbd37566b7c772d7a5c66d7fd2628b9cf610f897.jpg@87w_88h_1c_100q.webp','小邪神','2020-06-15 12:00:00');
 -- --------------------------------------------------------
 --
 -- Indexes for dumped tables
