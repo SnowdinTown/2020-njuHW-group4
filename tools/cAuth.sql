@@ -915,8 +915,26 @@ CREATE TABLE `moment` (
   `category` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image_list` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `liked` int(32) NOT NULL DEFAULT 0,
   `delete` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `comment`
+--
+
+CREATE TABLE `comment`(
+    `moment_id` int(32) NOT NULL,
+    `comment_id` int(32) AUTO_INCREMENT NOT NULL,
+    `open_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `content` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `liked` int(32) NOT NULL DEFAULT 0,
+    PRIMARY KEY(`comment_id`),
+    KEY `comment_id` (`comment_id`) USING BTREE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
