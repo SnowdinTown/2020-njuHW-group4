@@ -957,6 +957,76 @@ INSERT INTO `user_ticket` (`open_id`, `activity_id`, `ticket_no`, `delete`) VALU
 ('o4chG44fktgR6qaRsWixZUwd7w8o', 1, 4, 0),
 ('o4chG45SA-VpqSX-RnqhYVr8HgvE', 1, 3, 0);
 
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `association_album`
+--
+DROP TABLE IF EXISTS `association_album`;
+CREATE TABLE `association_album` (
+    `album_id` int(32) NOT NULL AUTO_INCREMENT,
+    `album_name` varchar(100) NOT NULL ,
+    `association_id` int(32) NOT NULL,
+    `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    primary key (`album_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+
+--
+-- 转存表中的数据 `association_album`
+--
+
+INSERT INTO `association_album` (album_id, album_name, association_id, create_time) VALUES
+(1,'社团相册样例',1,'2020-06-15 12:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `photo`
+--
+DROP TABLE IF EXISTS `photo`;
+CREATE TABLE `photo` (
+    `photo_id` int(32) NOT NULL AUTO_INCREMENT,
+    `description` varchar(500),
+    `image_src` varchar(255) NOT NULL ,
+    `album_id` int(32) NOT NULL ,
+    `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`photo_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+
+--
+-- 转存表中的数据 `photo`
+--
+
+INSERT INTO `photo` (photo_id, description, image_src, album_id, upload_date) VALUES
+(1,'社团照片样例','https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1592192179&di=f28c407031e652f6d0059a0567e0a97a&src=http://ku.90sjimg.com/element_pic/17/05/18/e00e570d52eaa3fd824f07f328804f64.jpg',1,'2020-06-15');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `message_wall`
+--
+DROP TABLE IF EXISTS `audit_message`;
+DROP TABLE IF EXISTS `message_wall`;
+CREATE TABLE `message_wall` (
+        `message_id` int(32) NOT NULL AUTO_INCREMENT,
+        `content` varchar(1000) NOT NULL ,
+        `likes` int(32) NOT NULL DEFAULT 0,
+        `status` int(1) NOT NULL DEFAULT false,
+        `association_id` int(32) NOT NULL,
+        `user_avatarUrl` varchar(255),
+        `user_name` varchar(255) NOT NULL ,
+        `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        primary key (`message_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=2;
+
+--
+-- 转存表中的数据 `message_wall`
+--
+
+INSERT INTO `message_wall` (message_id, content, likes,status, association_id, user_avatarUrl, user_name, date) VALUES
+(1,'一个积极向上，朝气蓬勃的社团，加油！！',2,true,1,'https://i1.hdslb.com/bfs/face/cbd37566b7c772d7a5c66d7fd2628b9cf610f897.jpg@87w_88h_1c_100q.webp','小邪神','2020-06-15 12:00:00');
+
+-- --------------------------------------------------------
 --
 -- Indexes for dumped tables
 --
