@@ -1049,7 +1049,7 @@ CREATE TABLE `message_wall` (
         `user_name` varchar(255) NOT NULL ,
         `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         primary key (`message_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=5;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=5;
 
 --
 -- 转存表中的数据 `message_wall`
