@@ -6,13 +6,11 @@ const bodyParser = require('koa-bodyparser');
 // 解析请求体
 app.use(bodyParser());
 
-/**
- * 监听url请求测试用
+
 app.use(async (ctx, next) =>{
     console.log(`Process ${ctx.request.method}${ctx.request.url}...`);
     await next();
 });
- **/
 
 
 // 引入路由分发

@@ -1105,8 +1105,7 @@ ALTER TABLE `association_audit`
 -- Indexes for table `association_joiner`
 --
 ALTER TABLE `association_joiner`
-  ADD PRIMARY KEY (`open_id`,`association_id`),
-  ADD KEY `open_id` (`open_id`);
+  ADD PRIMARY KEY (`open_id`,`association_id`);
 
 --
 -- Indexes for table `association_manager`
