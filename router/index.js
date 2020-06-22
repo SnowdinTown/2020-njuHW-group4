@@ -53,4 +53,6 @@ router.post('/weapp/updateMessageLikes',controllers.messageWall.updateLikes);
 
 router.get('/weapp/addAssociationJoiner',controllers.originController.addAssociationJoiner)
 
+router.get('/weapp/getUserAssociationList',controllers.originController.getUserAssociationList)
+
 module.exports = router;
