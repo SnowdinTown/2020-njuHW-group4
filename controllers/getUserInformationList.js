@@ -17,7 +17,7 @@ module.exports=async (ctx)=>{
         var cur_time=moment()
         var dis=cur_time.diff(activity_time,"hour")
         if(dis<-24||dis>=0)continue
-        var date=JSON.stringify(moment(ifm.date).add(1,'days')).substr(1,10);
+        var date=JSON.stringify(moment(ifm.date)).substr(1,10);
         var cur={
             time:date.substr(0,4)+"年"+date.substr(5,2)+"月"+date.substr(8,2)+"日"+" "+ifm.time.substr(0,5),
             image_src:ifm.image_src,
