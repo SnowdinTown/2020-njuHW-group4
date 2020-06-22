@@ -6,7 +6,7 @@ module.exports=async (ctx)=>{
     //const moment_id=1;
     const commentList=await mysql("comment")
         .join('csessioninfo','comment.open_id','csessioninfo.open_id')
-        .select('comment.comment_id','csessioninfo.user_info','comment.content','comment.time','comment.liked')
+        .select('comment.comment_id','csessioninfo.user_info','comment.content','comment.time','comment.liked','comment.open_id')
         .where('moment_id',moment_id)
     const res=[];
     for(var i=0;i<commentList.length;i++){
@@ -18,7 +18,8 @@ module.exports=async (ctx)=>{
             userphoto:user_info.avatarUrl,
             comment:comment.content,
             time:moment(new Date(comment.time)).utcOffset("+08:00").format('YYYY-MM-DD HH:mm:ss'),
-            liked:comment.liked
+            liked:comment.liked,
+            user_id:comment.open_id
         }
         console.log(user_info.nickName);
         res.push(cur);
