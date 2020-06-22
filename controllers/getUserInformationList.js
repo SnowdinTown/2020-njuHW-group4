@@ -5,11 +5,11 @@ module.exports=async (ctx)=>{
     const open_id=ctx.query.open_id;
     //const open_id="o4chG42YnTIfb9fQYQ5LidjXS76Y";
     //const open_id="o4chG412hg0qJLpdXyTNOAW4G3mk";
-    const information=await mysql('user_ticket')
-        .join('activity','user_ticket.activity_id','activity.activity_id')
+    const information=await mysql('association_joiner')
+        .join('activity','association_joiner.association_id','activity.association_id')
         .join('association','activity.association_id','association.id')
         .select('activity.date','activity.time','association.image_src','activity.activity_name','association.name')
-        .where('user_ticket.open_id',open_id)
+        .where('association_joiner.open_id',open_id)
     var res=[];
     for(var i=0;i<information.length;i++){
         var ifm=information[i];
