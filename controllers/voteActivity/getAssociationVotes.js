@@ -13,6 +13,9 @@ module.exports = async (ctx) =>{
         var options=await mysql('option')
             .select('option.*')
             .where('activity_id',vote_id);
+        var data1=await mysql('association')
+            .select('name')
+            .where('id',data[i].association_id);
         var cur={
             activity_id:data[i].activity_id,
             association_id:data[i].association_id,
@@ -22,7 +25,8 @@ module.exports = async (ctx) =>{
             vote_description:data[i].vote_description,
             vote_content:data[i].vote_content,
             vote_type:data[i].vote_type,
-            options:options
+            options:options,
+            association_name:data1[0].name
         }
         res.push(cur)
     }

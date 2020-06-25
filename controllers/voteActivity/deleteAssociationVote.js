@@ -1,7 +1,7 @@
 const mysql = require('../../middleware/mysql');
 module.exports = async (ctx) =>{
-    ///const activity_id=ctx.request.body.activity_id;
-    activity_id=1
+    const activity_id=ctx.request.body.activity_id;
+    ///activity_id=1
     try {
         await mysql('vote_activity')
             .where('activity_id', activity_id)
