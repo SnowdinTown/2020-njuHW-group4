@@ -4,6 +4,7 @@ module.exports = async (ctx) => {
 
     const open_id = ctx.query.open_id,
         association_id = ctx.query.association_id;
+    console.log(open_id)
     try {
         await mysql('association_joiner').insert({
             open_id: open_id,

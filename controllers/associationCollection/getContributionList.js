@@ -1,6 +1,10 @@
 const mysql=require('../../middleware/mysql')
 module.exports = async (ctx) => {
-    const collection_id =ctx.query.collection_id;
+    const activity_id =ctx.query.activity_id;
+    const temp=await mysql('association_collection')
+        .select('collection_id')
+        .where('activity_id',activity_id)
+    var collection_id=temp[0].collection_id
     const contributionList=await mysql('contribution')
         .select('contribution_id','open_id','name','time','title','writing')
         .where('collection_id',collection_id);
