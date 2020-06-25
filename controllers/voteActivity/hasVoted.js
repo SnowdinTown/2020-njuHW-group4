@@ -17,7 +17,7 @@ module.exports = async (ctx) =>{
         }
     }else{
         c={
-            msg:"Falase"
+            msg:"False"
         }
     }
     ctx.body=c
