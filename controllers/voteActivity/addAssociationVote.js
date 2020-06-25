@@ -9,7 +9,7 @@ module.exports = async (ctx) =>{
         vote_description=ctx.request.body.vote_description,
         vote_content=ctx.request.body.vote_content,
         vote_type=ctx.request.body.vote_type,
-        options=ctx.request.body.options;
+        options=eval(ctx.request.body.options);
     try{
         await mysql('vote_activity')
             .insert({
@@ -26,7 +26,7 @@ module.exports = async (ctx) =>{
             .max('activity_id');
         vote_id=data[0]['max(`activity_id`)'];
         for(var i=0;i<options.length;i++){
-            var option=options[i];
+            var option=eval(options[i]);
             await mysql('option')
                 .insert({
                     activity_id:vote_id,
@@ -44,7 +44,7 @@ module.exports = async (ctx) =>{
         var c={
             msg:'False'
         }
-        ctx.response.body=c
+        console.log(e)
     }
 
 }
