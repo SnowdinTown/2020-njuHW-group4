@@ -26,6 +26,5 @@ module.exports = async (ctx) =>{
         }
         res.push(cur)
     }
-    console.log(res[0].options)
     ctx.body=res
 }
