@@ -1061,6 +1061,151 @@ INSERT INTO `message_wall` (message_id, content, likes,status, association_id, u
 (3,'一个积极向上，朝气蓬勃的社团，加油！！',0,true,1,'https://i1.hdslb.com/bfs/face/cbd37566b7c772d7a5c66d7fd2628b9cf610f897.jpg@87w_88h_1c_100q.webp','小邪神','2020-06-15 12:00:00'),
 (4,'一个积极向上，朝气蓬勃的社团，加油！！',2,false,1,'https://i1.hdslb.com/bfs/face/cbd37566b7c772d7a5c66d7fd2628b9cf610f897.jpg@87w_88h_1c_100q.webp','小邪神','2020-06-15 12:00:00');
 -- --------------------------------------------------------
+
+--
+-- 表的结构 `association_collection`
+--
+DROP TABLE IF EXISTS `association_collection`;
+CREATE TABLE `association_collection` (
+                                     `collection_id` int(32) NOT NULL AUTO_INCREMENT,
+                                     `association_id` int(32) NOT NULL,
+                                     `start_time` varchar(100) NOT NULL ,
+                                     `end_time` varchar(100) NOT NULL ,
+                                     `collection_name` varchar(100) NOT NULL ,
+                                     `collection_description` varchar(1000) NOT NULL ,
+                                     `offlineTag` int(32) NOT NULL ,
+                                     `deleteTag` int(32) NOT NULL ,
+                                     `activity_id` int(32) NOT NULL DEFAULT 0,
+                                     primary key (`collection_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=3;
+
+--
+-- 转存表中的数据 `association_collection`
+--
+
+INSERT INTO `association_collection` (collection_id, association_id, start_time, end_time,collection_name,collection_description,offlineTag,deleteTag) VALUES
+(1,1,'2020-06-15 12:00:00','2020-06-15 12:00:00','投稿活动','一个投稿活动',0,0),
+(2,2,'2020-06-15 12:00:00','2020-06-15 12:00:00','投稿活动','一个投稿活动',0,0);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `collection_photo`
+--
+DROP TABLE IF EXISTS `collection_photo`;
+CREATE TABLE `collection_photo` (
+                                          `photo_id` int(32) NOT NULL AUTO_INCREMENT,
+                                          `collection_id` int(32) NOT NULL DEFAULT 0,
+                                          `contribution_id` int(32) NOT NULL DEFAULT 0,
+                                          `photo_url` varchar(100) NOT NULL ,
+                                          primary key (`photo_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=3;
+
+--
+-- 转存表中的数据 `collection_photo`
+--
+
+INSERT INTO `collection_photo` (photo_id,collection_id,contribution_id,photo_url) VALUES
+(1,1,1,'https://github.com/'),
+(2,1,1,'https://github.com/');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `contribution`
+--
+DROP TABLE IF EXISTS `contribution`;
+CREATE TABLE `contribution` (
+                                    `contribution_id` int(32) NOT NULL AUTO_INCREMENT,
+                                    `collection_id` int(32) NOT NULL,
+                                    `open_id` varchar(100) NOT NULL ,
+                                    `name` varchar(100) DEFAULT NULL ,
+                                    `time` varchar(100) NOT NULL ,
+                                    `title` varchar(100) DEFAULT NULL,
+                                    `writing` varchar(1000) DEFAULT  NULL,
+                                    primary key (`contribution_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=3;
+
+--
+-- 转存表中的数据 `contribution`
+--
+
+INSERT INTO `contribution` (contribution_id,collection_id,open_id,name,time) VALUES
+(1,1,'oxiec','https://github.com/','2020-06-15 12:00:00'),
+(2,1,'ocsecx','https://github.com/','2020-06-15 12:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `vote_activity`
+--
+DROP TABLE IF EXISTS `vote_activity`;
+CREATE TABLE `vote_activity` (
+                                `activity_id` int(32) NOT NULL AUTO_INCREMENT,
+                                `association_id` int(32) NOT NULL,
+                                `start_time` varchar(100) NOT NULL ,
+                                `end_time` varchar(100) NOT NULL ,
+                                `vote_name` varchar(100) NOT NULL ,
+                                `vote_content` varchar(1000) NOT NULL ,
+                                `vote_description` varchar(1000) NOT NULL ,
+                                `status` int(32) NOT NULL DEFAULT 1,
+                                `vote_type` int(32) NOT NULL ,
+                                primary key (`activity_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=3;
+
+--
+-- 转存表中的数据 `vote_activity`
+--
+
+INSERT INTO `vote_activity` (activity_id,association_id,start_time,end_time,vote_name,vote_content,vote_description,status,vote_type) VALUES
+(1,1,'2020-06-15 12:00:00','2020-06-15 12:00:00','111','222','333',1,3),
+(2,1,'2020-06-15 12:00:00','2020-06-15 12:00:00','333','444','000',1,2);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `option`
+--
+DROP TABLE IF EXISTS `option`;
+CREATE TABLE `option` (
+                                 `option_id` int(32) NOT NULL AUTO_INCREMENT,
+                                 `activity_id` int(32) NOT NULL,
+                                 `option_content` varchar(1000) NOT NULL ,
+                                 `chosen_num` int(32) NOT NULL DEFAULT 0,
+                                 `option_type` int(32) NOT NULL ,
+                                 primary key (`option_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=3;
+
+--
+-- 转存表中的数据 `option`
+--
+
+INSERT INTO `option` (option_id,activity_id,option_content,chosen_num,option_type) VALUES
+(1,1,'111',0,0),
+(2,1,'222',0,0);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `answer`
+--
+DROP TABLE IF EXISTS `answer`;
+CREATE TABLE `answer` (
+                          `answer_id` int(32) NOT NULL AUTO_INCREMENT,
+                          `open_id` varchar(100) NOT NULL ,
+                          `option_id` int(32) NOT NULL,
+                          `content` varchar(100) DEFAULT NULL,
+                          primary key (`answer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=3;
+
+--
+-- 转存表中的数据 `answer`
+--
+
+INSERT INTO `answer` (answer_id, open_id, option_id) VALUES
+(1,'o4chG44fktgR6qaRsWixZUwd7w8o',1),
+(2,'o4chG44fktgR6qaRsWixZUwd7w8o',2);
+-- --------------------------------------------------------
 --
 -- Indexes for dumped tables
 --

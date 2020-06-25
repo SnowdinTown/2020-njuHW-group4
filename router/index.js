@@ -5,7 +5,7 @@ const router = require('koa-router')();
 const controllers = require('../controllers/');
 
 // 关联路由与controllers
-router.get('/',controllers.hello);
+router.get('/hello',controllers.hello);
 
 router.get('/test',controllers.testdb);
 
@@ -51,8 +51,40 @@ router.post('/weapp/updateMessageLikes',controllers.messageWall.updateLikes);
 
 //originPart
 
-router.get('/weapp/addAssociationJoiner',controllers.originController.addAssociationJoiner)
+router.get('/weapp/addAssociationJoiner',controllers.originController.addAssociationJoiner);
 
-router.get('/weapp/getUserAssociationList',controllers.originController.getUserAssociationList)
+router.get('/weapp/getUserAssociationList',controllers.originController.getUserAssociationList);
+
+//collection
+
+router.post('/weapp/addAssociationCollection',controllers.associationCollection.addAssociationCollection);
+
+router.get('/weapp/getContributionList',controllers.associationCollection.getContributionList);
+
+router.get('/weapp/getContribution',controllers.associationCollection.getContribution);
+
+router.get('/weapp/getAllCollectionList',controllers.associationCollection.getAllCollectionList);
+
+router.get('/weapp/getAssociationCollectionList',controllers.associationCollection.getAssociationCollectionList);
+
+router.post('/weapp/addUserContribution',controllers.associationCollection.addUserContribution);
+
+router.get('/weapp/getCollection',controllers.associationCollection.getCollection);
+
+//vote
+
+router.post('/weapp/addAssociationVote',controllers.voteActivity.addAssociationVote);
+
+router.get('/weapp/getAllVotes',controllers.voteActivity.getAllVotes);
+
+router.get('/weapp/getAssociationVotes',controllers.voteActivity.getAssociationVotes);
+
+router.post('/weapp/deleteAssociationVote',controllers.voteActivity.deleteAssociationVote);
+
+router.get('/weapp/getVoteById',controllers.voteActivity.getVoteById);
+
+router.post('/weapp/addAnswer',controllers.voteActivity.addAnswer);
+
+router.get('/weapp/hasVoted',controllers.voteActivity.hasVoted);
 
 module.exports = router;

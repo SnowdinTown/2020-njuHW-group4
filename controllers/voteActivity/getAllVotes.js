@@ -1,0 +1,28 @@
+const mysql = require('../../middleware/mysql');
+
+
+module.exports = async (ctx) =>{
+    var data=await mysql('vote_activity')
+        .select('vote_activity.*')
+        .where('status',1);
+    var res=[];
+    for(var i=0;i<data.length;i++){
+        var vote_id=data[i].activity_id;
+        var options=await mysql('option')
+            .select('option.*')
+            .where('activity_id',vote_id);
+        var cur={
+            activity_id:data[i].activity_id,
+            association_id:data[i].association_id,
+            start_time:data[i].start_time,
+            end_time:data[i].end_time,
+            vote_name:data[i].vote_name,
+            vote_description:data[i].vote_description,
+            vote_content:data[i].vote_content,
+            vote_type:data[i].vote_type,
+            options:options
+        }
+        res.push(cur)
+    }
+    ctx.body=res
+}
