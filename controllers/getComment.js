@@ -2,20 +2,23 @@ const mysql=require('../middleware/mysql')
 const moment=require('moment')
 
 module.exports=async (ctx)=>{
-    const moment_id=ctx.query.id,limited=ctx.query.limited,offset = ctx.query.offset;
+    const moment_id=ctx.query.id;
     //const moment_id=1;
-    const commentList=await mysql("comment")
-        .join('csessioninfo','comment.open_id','csessioninfo.open_id')
-        .select('comment.comment_id','csessioninfo.user_info','comment.content','comment.time','comment.liked','comment.open_id')
+    let list =await mysql("comment")
+        .select('comment_id','content','time','liked','open_id',
+            'user_avatarUrl','user_name')
         .where('moment_id',moment_id)
-        .andWhere('comment.comment_id','>',offset)
-        .andWhere('comment.delete',0)
-        .limit(limited)
+        .andWhere('delete',0);
 
-    const res=[];
+    for(let i=0;i<list.length;++i){
+        list[i].time = moment(new Date(list[i].time)).format('YYYY-MM-DD HH:mm');
+    }
+
+    ctx.body = list;
+
+ /**   const res=[];
     for(var i=0;i<commentList.length;i++){
         var comment=commentList[i];
-        var user_info=JSON.parse(comment.user_info)
         var cur={
             id:comment.comment_id,
             username:user_info.nickName,
@@ -29,5 +32,5 @@ module.exports=async (ctx)=>{
         res.push(cur);
     }
     console.log(res);
-    ctx.body=res;
-}
+  */
+};
