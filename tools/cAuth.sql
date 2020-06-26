@@ -932,10 +932,14 @@ CREATE TABLE `comment`(
     `content` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
     `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `liked` int(32) NOT NULL DEFAULT 0,
+    `delete` tinyint(1) NOT NULL DEFAULT '0',
     PRIMARY KEY(`comment_id`),
     KEY `comment_id` (`comment_id`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `comment` (`moment_id`,`comment_id`,`open_id`,`content`,`time`,`liked`,`delete`)VALUES
+(10,1,'o4chG4_WOUaC6bQcoHhHOiJbNgPs','太棒了！','2020-06-26 01:20:28',10,0),
+(11,2,'o4chG4-XFyB3rTIVY3Jbg9D0tD-w','hhhhhh','2020-06-26 16:15:47',11,0);
 -- --------------------------------------------------------
 
 --

@@ -10,6 +10,7 @@ module.exports=async (ctx)=>{
             moment_id:moment_id,
             open_id:open_id,
             content:comment,
+            delete:0
         }).returning('comment_id');
     }catch (e) {
         ctx.state={
