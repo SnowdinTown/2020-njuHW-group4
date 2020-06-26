@@ -21,6 +21,8 @@ router.get('/weapp/getMomentDetail',controllers.getMomentDetail);
 
 router.get('/weapp/updateCommentLike',controllers.updateCommentLike);
 
+router.get('/weapp/getWhetherManager',controllers.getWhetherManager)
+
 //association_album
 router.get('/weapp/getAssociationAlbums',controllers.associationAlbum.getAssociationAlbums);
 
@@ -57,7 +59,8 @@ router.get('/weapp/getUserAssociationList',controllers.originController.getUserA
 
 //collection
 
-router.post('/weapp/addAssociationCollection',controllers.associationCollection.addAssociationCollection);
+router.get('/weapp/addAssociationCollection',controllers.associationCollection.addAssociationCollection);
+router.get('/weapp/addAssociationCollection',controllers.associationCollection.addAssociationCollection);
 
 router.get('/weapp/getContributionList',controllers.associationCollection.getContributionList);
 
@@ -67,7 +70,7 @@ router.get('/weapp/getAllCollectionList',controllers.associationCollection.getAl
 
 router.get('/weapp/getAssociationCollectionList',controllers.associationCollection.getAssociationCollectionList);
 
-router.post('/weapp/addUserContribution',controllers.associationCollection.addUserContribution);
+router.get('/weapp/addUserContribution',controllers.associationCollection.addUserContribution);
 
 router.get('/weapp/getCollection',controllers.associationCollection.getCollection);
 
@@ -86,5 +89,15 @@ router.get('/weapp/getVoteById',controllers.voteActivity.getVoteById);
 router.post('/weapp/addAnswer',controllers.voteActivity.addAnswer);
 
 router.get('/weapp/hasVoted',controllers.voteActivity.hasVoted);
+
+
+router.get('/weapp/addAssociationJoiner',controllers.originController.addAssociationJoiner)
+router.get('/weapp/getAllActivityList',controllers.originController.getAllActivityList)
+router.get('/weapp/addAssociationActivity',controllers.originController.addAssociationActivity)
+router.get('/weapp/getActivityDetail',controllers.originController.getActivityDetail)
+router.get('/weapp/getAssociationActivityList',controllers.originController.getAssociationActivityList)
+router.get('/weapp/getUserAssociationList',controllers.originController.getUserAssociationList)
+router.get('/weapp/deleteUserJoinedAssociation',controllers.originController.deleteUserJoinedAssociation)
+
 
 module.exports = router;
