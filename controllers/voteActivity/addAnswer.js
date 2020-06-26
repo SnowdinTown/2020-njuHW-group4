@@ -3,6 +3,7 @@ const mysql = require('../../middleware/mysql');
 
 module.exports = async (ctx) =>{
     const answers=eval('('+ctx.request.body.answers+')');
+    console.log(answers)
     try {
         for(var i=0;i<answers.length;i++) {
             var answer=answers[i];
@@ -35,6 +36,6 @@ module.exports = async (ctx) =>{
         var c={
             msg:'False'
         }
-        ctx.response.body=c
+        console.log(e)
     }
 }

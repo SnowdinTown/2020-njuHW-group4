@@ -19,4 +19,4 @@ app.use(router.routes());
 
 // 启动程序，监听端口
 app.listen(3000);
-console.log('app start st port 3000');
+console.log('app start at port 3000');

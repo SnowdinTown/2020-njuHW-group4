@@ -13,11 +13,11 @@ module.exports = async (ctx) =>{
     var c
     if(data.length!==0){
         c={
-            msg:"True"
+            msg: true
         }
     }else{
         c={
-            msg:"False"
+            msg:false
         }
     }
     ctx.body=c
