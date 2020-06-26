@@ -21,9 +21,10 @@ module.exports=async (ctx)=>{
         var cur={
             time:date.substr(0,4)+"年"+date.substr(5,2)+"月"+date.substr(8,2)+"日"+" "+ifm.time.substr(0,5),
             image_src:ifm.image_src,
-            information:ifm.activity_name+"活动将于24小时后开始",
+            information:ifm.activity_name+"将于24小时后开始",
             name:ifm.name,
-            id:ifm.activity_id
+            id:ifm.activity_id,
+            type: 0
         }
         res.push(cur)
     }
@@ -42,9 +43,10 @@ module.exports=async (ctx)=>{
         var c_cur={
             time:c_start_time.substr(0,4)+"年"+c_start_time.substr(5,2)+"月"+c_start_time.substr(8,2)+"日"+" "+c_start_time.substr(11,5),
             image_src:c_ifm.image_src,
-            information:c_ifm.collection_name+"活动正在进行中",
+            information:c_ifm.collection_name+"正在进行中",
             name:c_ifm.name,
-            id:c_ifm.activity_id
+            id:c_ifm.activity_id,
+            type: 0
         }
         res.push(c_cur)
     }
@@ -64,9 +66,10 @@ module.exports=async (ctx)=>{
         var v_cur={
             time:v_start_time.substr(0,4)+"年"+v_start_time.substr(5,2)+"月"+v_start_time.substr(8,2)+"日"+" "+v_start_time.substr(11,5),
             image_src:v_ifm.image_src,
-            information:v_ifm.vote_name+"活动正在进行中",
+            information:v_ifm.vote_name+"正在进行中",
             name:v_ifm.name,
-            id:v_ifm.activity_id
+            id:v_ifm.activity_id,
+            type: 1
         }
         res.push(v_cur)
     }

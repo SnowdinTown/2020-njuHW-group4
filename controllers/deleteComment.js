@@ -7,7 +7,7 @@ module.exports=async (ctx)=>{
         await mysql('comment')
             .where('comment_id',comemnt_id)
             .update(`delete`,1);
-        ctx.state = 200
+        ctx.status = 200
 
     }catch (e) {
         ctx.state={
