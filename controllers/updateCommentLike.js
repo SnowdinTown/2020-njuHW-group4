@@ -13,6 +13,7 @@ module.exports=async (ctx)=>{
                 liked:(res[0].liked+1),
                 thisKeyIsSkipped:undefined
             });
+        ctx.status = 200;
     }catch (e) {
         ctx.state={
             code:-1,
